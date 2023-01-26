@@ -1,6 +1,6 @@
 # CS348 Group Project
 
-This application is based on datasets of movies and TV shows, which allow movie and TV show fans to search, view, rate and leave comments for each movie and TV show.
+This application is based on datasets of movies and TV shows, and allows movie and TV show fans to search, view, rate and leave comments for each movie and TV show.
 
 # Installation
 (how to create and load database)
