@@ -12,6 +12,4 @@ Ganlin Feng
 
 Junyi Liu
 
-Ruiwen Hu
-
 Yuming Long
