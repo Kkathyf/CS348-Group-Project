@@ -5,8 +5,8 @@ CREATE TABLE Movie (
   time INT,
   language VARCHAR(255),
   country VARCHAR(255),
-  rate DECIMAL(4,2),
-  num_votes INT
+  avg_rate DECIMAL(4,2),
+  num_of_ratings INT
 );
 
 CREATE TABLE Actor (
@@ -53,14 +53,15 @@ CREATE TABLE Moviegenre (
 
 CREATE TABLE Reviewer (
   id INT NOT NULL PRIMARY KEY,
-  name VARCHAR(255),
-  num_of_rating INT
+  username VARCHAR(255),
+  num_of_ratings INT
 );
 
 CREATE TABLE Rating (
   rid INT NOT NULL,
   mid INT NOT NULL,
-  star DECIMAL(2,1),
+  rate DECIMAL(2,1),
+  comment VARCHAR(255),
   PRIMARY KEY (rid, mid),
   FOREIGN KEY (rid) REFERENCES Reviewer(id),
   FOREIGN KEY (mid) REFERENCES Movie(id)
@@ -72,8 +73,17 @@ REFERENCES NEW ROW as new_rating
 FOR EACH ROW
 BEGIN
   UPDATE Movie
-  SET rate = (rate * num_votes + new_rating.star) / (num_votes + 1),
-      num_votes = num_votes + 1
+  SET avg_rate = (avg_rate * num_of_ratings + new_rating.rate) / (num_of_ratings + 1),
+      num_of_ratings = num_of_ratings + 1
   WHERE id = new_rating.mid;
+END;
+
+
+CREATE TRIGGER update_reviewer_num_of_ratings
+AFTER INSERT ON Rating
+REFERENCES NEW ROW as new_rating
+FOR EACH ROW
+BEGIN
+    UPDATE Reviewer SET num_of_ratings = num_of_ratings + 1 WHERE id = new_rating.rid;
 END;
 
