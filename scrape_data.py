@@ -1,3 +1,5 @@
+# need to install from:
+# pip install cinemagoer
 from imdb import Cinemagoer
 
 # create an instance of the Cinemagoer class
