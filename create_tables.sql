@@ -65,3 +65,15 @@ CREATE TABLE Rating (
   FOREIGN KEY (rid) REFERENCES Reviewer(id),
   FOREIGN KEY (mid) REFERENCES Movie(id)
 );
+
+CREATE TRIGGER update_movie_rating
+AFTER INSERT ON Rating
+REFERENCES NEW ROW as new_rating
+FOR EACH ROW
+BEGIN
+  UPDATE Movie
+  SET rate = (rate * num_votes + new_rating.star) / (num_votes + 1),
+      num_votes = num_votes + 1
+  WHERE id = new_rating.mid;
+END;
+
