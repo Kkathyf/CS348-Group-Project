@@ -14,14 +14,18 @@ movie_ids  = ['0133093', '0234215', '0242653', '10838180']
 for movie_id in movie_ids:
     
     movie = ia.get_movie(movie_id)
-    print("Info for {}".format(movie['title']))
-    
-     # print the casts of the directors of the movie
+    print("Info for Movie ID ={}".format(movie_id))
+    print('Title:')
+    print(movie['title'])
+    # print the casts of the directors of the movie
     print('Casts:')
     for cast in movie['cast']:
         print(cast)
-    
-    # print(movie.keys())
+    print('Year:')
+    print(movie['year'])
+    print('Time:')
+    print()
+    print(movie.keys())
     # print the names of the directors of the movie
     print('Directors:')
     for director in movie['directors']:
