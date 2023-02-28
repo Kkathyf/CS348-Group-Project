@@ -10,7 +10,7 @@ WHERE avg_rate > 7.0;
 
 # Feature 3:
 SELECT name
-FROM Moive
+FROM Movie
 WHERE id in (SELECT mid
 	     FROM Director join Direction on id = did
 	     WHERE first_name = "Lana" and surname = "Wachowski");
