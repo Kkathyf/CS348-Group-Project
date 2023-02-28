@@ -1,7 +1,7 @@
 # Feature 1:
 SELECT * 
 FROM Movie
-WHERE year <= 2000;
+WHERE name = "The Matrix";
 
 # Feature 2:
 SELECT name
