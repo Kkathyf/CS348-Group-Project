@@ -103,23 +103,20 @@ CREATE TABLE Rating (
 
 CREATE TRIGGER update_movie_rating
 AFTER INSERT ON Rating
-REFERENCING NEW ROW as new_rating
 FOR EACH ROW
 BEGIN
-  UPDATE Movie
-  SET avg_rate = (avg_rate * num_of_ratings + new_rating.rate) / (num_of_ratings + 1),
-      num_of_ratings = num_of_ratings + 1
-  WHERE id = new_rating.mid;
+  UPDATE Movies
+  SET avg_rate = (avg_rate * num_of_ratings + NEW.rate) / (num_of_ratings + 1), num_of_ratings = num_of_ratings + 1
+  WHERE id = NEW.mid;
 END;
 
 
 CREATE TRIGGER update_reviewer_num_of_ratings
 AFTER INSERT ON Rating
-REFERENCING NEW ROW as new_rating
 FOR EACH ROW
 BEGIN
     UPDATE Reviewer 
     SET num_of_ratings = num_of_ratings + 1 
-    WHERE id = new_rating.rid;
+    WHERE id = NEW.rid;
 END;
 
