@@ -64,3 +64,6 @@ INSERT INTO Movie_Genre VALUES
 (3, 234426),
 (4, 234426),
 (5, 234426);
+
+INSERT INTO Reviewer VALUES
+(1, "Kathy", 0);
