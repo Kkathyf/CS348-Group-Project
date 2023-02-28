@@ -1,3 +1,5 @@
+# Script to scrape data from IMDB database
+
 # need to install from:
 # pip install cinemagoer
 from imdb import Cinemagoer
@@ -24,8 +26,10 @@ for movie_id in movie_ids:
     print('Year:')
     print(movie['year'])
     print('Time:')
-    print()
-    print(movie.keys())
+    print(movie['runtimes'])
+    print('Language:')
+    for language in movie['language codes']:
+        print(language)
     # print the names of the directors of the movie
     print('Directors:')
     for director in movie['directors']:
