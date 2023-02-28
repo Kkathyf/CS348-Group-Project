@@ -93,7 +93,7 @@ CREATE TRIGGER update_movie_rating
   AFTER INSERT ON Rating
   FOR EACH ROW
 BEGIN
-  UPDATE Movies
+  UPDATE Movie
   SET avg_rate = (avg_rate * num_of_ratings + NEW.rate) / (num_of_ratings + 1), num_of_ratings = num_of_ratings + 1
   WHERE id = NEW.mid;
 END$$
