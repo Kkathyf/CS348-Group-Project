@@ -37,8 +37,7 @@ DROP TABLE IF EXISTS Actor;
 CREATE TABLE Actor (
   id INT NOT NULL PRIMARY KEY,
   first_name VARCHAR(255),
-  surname VARCHAR(255),
-  gender VARCHAR(255)
+  surname VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS Director;
