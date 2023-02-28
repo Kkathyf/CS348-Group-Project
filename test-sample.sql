@@ -13,7 +13,7 @@ SELECT name
 FROM Movie
 WHERE id in (SELECT mid
 	     FROM Director join Direction on id = did
-	     WHERE first_name = "Lana" and surname = "Wachowski");
+	     WHERE first_name = "Hiner" and surname = "Saleem");
 
 # Feature 4:
 SELECT name
