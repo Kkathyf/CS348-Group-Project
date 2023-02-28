@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS Languages;
 CREATE TABLE Languages (
   id INT NOT NULL PRIMARY KEY,
   language_code VARCHAR(10) DEFAULT NULL,
-  language_name VARCHAR(500) DEFAULT NULL,
+  language_name VARCHAR(500) DEFAULT NULL
 );
 
 DROP TABLE IF EXISTS Movie_Language;
@@ -24,8 +24,8 @@ CREATE TABLE Movie_Language (
   movie_id INT NOT NULL,
   language_id INT NOT NULL,
   CONSTRAINT fk_ml_movie FOREIGN KEY (movie_id) REFERENCES Movie (id),
-  CONSTRAINT fk_ml_lang FOREIGN KEY (language_id) REFERENCES Language (id),
-)
+  CONSTRAINT fk_ml_lang FOREIGN KEY (language_id) REFERENCES Language (id)
+);
 
 DROP TABLE IF EXISTS Actors;
 
