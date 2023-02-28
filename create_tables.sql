@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS Movies;
+DROP TABLE IF EXISTS Movie;
 
-CREATE TABLE Movies (
+CREATE TABLE Movie (
   id INT NOT NULL PRIMARY KEY,
   name VARCHAR(255),
   year INT,
@@ -10,9 +10,9 @@ CREATE TABLE Movies (
   num_of_ratings INT
 );
 
-DROP TABLE IF EXISTS Languages;
+DROP TABLE IF EXISTS Language;
 
-CREATE TABLE Languages (
+CREATE TABLE Language (
   id INT NOT NULL PRIMARY KEY,
   language_code VARCHAR(10) DEFAULT NULL,
   language_name VARCHAR(500) DEFAULT NULL
@@ -24,29 +24,29 @@ CREATE TABLE Movie_Language (
   movie_id INT NOT NULL,
   language_id INT NOT NULL,
   CONSTRAINT fk_ml_movie FOREIGN KEY (movie_id) REFERENCES Movie (id),
-  CONSTRAINT fk_ml_lang FOREIGN KEY (language_id) REFERENCES Languages (id)
+  CONSTRAINT fk_ml_lang FOREIGN KEY (language_id) REFERENCES Language (id)
 );
 
-DROP TABLE IF EXISTS Actors;
+DROP TABLE IF EXISTS Actor;
 
-CREATE TABLE Actors (
+CREATE TABLE Actor (
   id INT NOT NULL PRIMARY KEY,
   first_name VARCHAR(255),
   surname VARCHAR(255),
   gender VARCHAR(255)
 );
 
-DROP TABLE IF EXISTS Directors;
+DROP TABLE IF EXISTS Director;
 
-CREATE TABLE Directors (
+CREATE TABLE Director (
   id INT NOT NULL PRIMARY KEY,
   first_name VARCHAR(255),
   surname VARCHAR(255)
 );
 
-DROP TABLE IF EXISTS Directions;
+DROP TABLE IF EXISTS Direction;
 
-CREATE TABLE Directions (
+CREATE TABLE Direction (
   did INT NOT NULL,
   mid INT NOT NULL,
   PRIMARY KEY (did, mid),
@@ -54,9 +54,9 @@ CREATE TABLE Directions (
   FOREIGN KEY (mid) REFERENCES Movie(id)
 );
 
-DROP TABLE IF EXISTS Casts;
+DROP TABLE IF EXISTS Cast;
 
-CREATE TABLE Casts (
+CREATE TABLE Cast (
   aid INT NOT NULL,
   mid INT NOT NULL,
   PRIMARY KEY (aid, mid),
@@ -64,16 +64,16 @@ CREATE TABLE Casts (
   FOREIGN KEY (mid) REFERENCES Movie(id)
 );
 
-DROP TABLE IF EXISTS Genres;
+DROP TABLE IF EXISTS Genre;
 
-CREATE TABLE Genres (
+CREATE TABLE Genre (
   id INT NOT NULL PRIMARY KEY,
   type VARCHAR(255)
 );
 
-DROP TABLE IF EXISTS Movie_Genres;
+DROP TABLE IF EXISTS Movie_Genre;
 
-CREATE TABLE Movie_Genres (
+CREATE TABLE Movie_Genre (
   gid INT NOT NULL,
   mid INT NOT NULL,
   PRIMARY KEY (gid, mid),
@@ -81,17 +81,17 @@ CREATE TABLE Movie_Genres (
   FOREIGN KEY (mid) REFERENCES Movie(id)
 );
 
-DROP TABLE IF EXISTS Reviewers;
+DROP TABLE IF EXISTS Reviewer;
 
-CREATE TABLE Reviewers (
+CREATE TABLE Reviewer (
   id INT NOT NULL PRIMARY KEY,
   username VARCHAR(255),
   num_of_ratings INT
 );
 
-DROP TABLE IF EXISTS Ratings;
+DROP TABLE IF EXISTS Rating;
 
-CREATE TABLE Ratings (
+CREATE TABLE Rating (
   rid INT NOT NULL,
   mid INT NOT NULL,
   rate DECIMAL(2,1),
