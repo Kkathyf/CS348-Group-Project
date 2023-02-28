@@ -9,27 +9,9 @@ CREATE TABLE Movie (
   id INT NOT NULL PRIMARY KEY,
   name VARCHAR(255),
   year INT,
-  time INT,
-  country VARCHAR(255),
+  runtime INT,
   avg_rate DECIMAL(4,2),
   num_of_ratings INT
-);
-
-DROP TABLE IF EXISTS Language;
-
-CREATE TABLE Language (
-  id INT NOT NULL PRIMARY KEY,
-  language_code VARCHAR(10) DEFAULT NULL,
-  language_name VARCHAR(500) DEFAULT NULL
-);
-
-DROP TABLE IF EXISTS Movie_Language;
-
-CREATE TABLE Movie_Language (
-  mid INT NOT NULL,
-  lid INT NOT NULL,
-  CONSTRAINT fk_ml_movie FOREIGN KEY (mid) REFERENCES Movie (id),
-  CONSTRAINT fk_ml_lang FOREIGN KEY (lid) REFERENCES Language (id)
 );
 
 DROP TABLE IF EXISTS Actor;
