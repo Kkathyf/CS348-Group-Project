@@ -15,9 +15,9 @@ This application is based on datasets of movies and TV shows, and allows movie a
 
 # Instruction on Mysql
 1. log into Mysql using your username and password.
-2. Type "source create-tables.sql". This will create a new database called "CS348-Movie-DB" and all the tables needed.
-3. Type "sample-data.sql". This will insert some sample data into the tables.
-4. Type "test-sample.sql". This will show the output for the 5 functionalities we have so far.
+2. Type `source create-tables.sql`. This will create a new database called "CS348-Movie-DB" and all the tables needed.
+3. Type `sample-data.sql`. This will insert some sample data into the tables.
+4. Type `test-sample.sql`. This will show the output for the 5 functionalities we have so far.
 
 # Instruction on User Interface
 
