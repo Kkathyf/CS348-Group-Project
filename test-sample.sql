@@ -18,8 +18,10 @@ WHERE id in (SELECT mid
 # Feature 4:
 SELECT name
 FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r
-      FROM Movie)
+      FROM Movie) as T
 WHERE r <= 3;
 
 # Feature 5:
 INSERT INTO Rating VALUES (1, 133093, 6.2, "I like this movie.");
+SELECT *
+FROM Rating;
