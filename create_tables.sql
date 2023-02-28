@@ -26,10 +26,10 @@ CREATE TABLE Language (
 DROP TABLE IF EXISTS Movie_Language;
 
 CREATE TABLE Movie_Language (
-  movie_id INT NOT NULL,
-  language_id INT NOT NULL,
-  CONSTRAINT fk_ml_movie FOREIGN KEY (movie_id) REFERENCES Movie (id),
-  CONSTRAINT fk_ml_lang FOREIGN KEY (language_id) REFERENCES Language (id)
+  mid INT NOT NULL,
+  lid INT NOT NULL,
+  CONSTRAINT fk_ml_movie FOREIGN KEY (mid) REFERENCES Movie (id),
+  CONSTRAINT fk_ml_lang FOREIGN KEY (lid) REFERENCES Language (id)
 );
 
 DROP TABLE IF EXISTS Actor;
