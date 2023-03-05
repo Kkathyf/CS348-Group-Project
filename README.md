@@ -10,7 +10,7 @@ This application is based on datasets of movies and TV shows, and allows movie a
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
 2. Find all movies with rating in a specific range. (ex. `> 7.0/10.0`)
 3. Find all movies directed by a specific director. (ex. `Hiner Saleem`)
-4. Find movies with `top-n` ratings. (ps. now only support top 3)
+4. Find movies with `top-n` ratings. (ps. now only support `n <= 4`)
 5. Leave both a rate and a comment on a specific movie.
 
 # Instruction on Mysql
