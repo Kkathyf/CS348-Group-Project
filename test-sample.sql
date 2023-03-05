@@ -17,6 +17,6 @@ FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r
 WHERE r <= 3;
 
 # Feature 4:
-INSERT INTO Rating VALUES (1, 133093, 6.2, "I like this movie.");
+INSERT INTO Rating VALUES (1, 133093, 6.5, "I like this movie.");
 SELECT *
 FROM Rating;

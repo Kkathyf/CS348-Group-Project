@@ -1,11 +1,4 @@
 mysql> source test-sample.sql
-+--------+------------+------+---------+----------+----------------+
-| id     | name       | year | runtime | avg_rate | num_of_ratings |
-+--------+------------+------+---------+----------+----------------+
-| 133093 | The Matrix | 1999 |     136 |     8.70 |        1931124 |
-+--------+------------+------+---------+----------+----------------+
-1 row in set (0.00 sec)
-
 +---------------------+
 | name                |
 +---------------------+
@@ -28,15 +21,15 @@ mysql> source test-sample.sql
 | The Matrix Reloaded    |
 | The Matrix Revolutions |
 +------------------------+
-3 rows in set (0.01 sec)
+3 rows in set (0.00 sec)
 
 Query OK, 1 row affected (0.00 sec)
 
 +-----+--------+------+--------------------+
 | rid | mid    | rate | comment            |
 +-----+--------+------+--------------------+
-|   1 | 133093 |  6.2 | I like this movie. |
+|   1 | 133093 |  6.5 | I like this movie. |
 +-----+--------+------+--------------------+
-1 row in set (0.00 sec)
+1 row in set (0.01 sec)
 
 mysql> \q
