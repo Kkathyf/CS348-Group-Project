@@ -1,27 +1,41 @@
 import mysql.connector
 
+
 def connect():
-    # establish connection
-    cnx = mysql.connector.connect(user='root',
-                                  password='12345678',
-                                  host='localhost',
-                                  database='test_schema')
+    try:
+        # establish connection
+        cnx = mysql.connector.connect(user='root',
+                                      password='12345678',
+                                      host='localhost',
+                                      database='CS348_MOVIE_DB')
 
-    # create a cursor
-    cursor = cnx.cursor()
+        # create a cursor
+        cursor = cnx.cursor()
 
-    with open('/Users/clairesheng/CS348-Group-Project/create_tables.sql', 'r') as file:
-        sql_script = file.read()
+        with open('../sample-data.sql', 'r') as file:
+            sql_data = file.read()
 
-    # execute the SQL script
-    for result in cursor.execute(sql_script, multi=True):
-        if result.with_rows:
-            rows = result.fetchall()
-            print(rows)
+        with open('../test-sample.sql', 'r') as file:
+            sql_test = file.read()
 
-    # commit changes and close connection
-    cnx.commit()
 
-    # close cursor and connection
-    cursor.close()
-    cnx.close()
+        # execute the SQL script
+        for result in cursor.execute(sql_data, multi=True):
+            if result.with_rows:
+                rows = result.fetchall()
+                print(rows)
+
+        for result in cursor.execute(sql_test, multi=True):
+            if result.with_rows:
+                rows = result.fetchall()
+                print(rows)
+
+        # commit changes and close connection
+        cnx.commit()
+
+        # close cursor and connection
+        cursor.close()
+        cnx.close()
+    except Exception as e:
+        # handle the exception
+        print("An error occurred: ", e)
