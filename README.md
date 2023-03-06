@@ -20,8 +20,8 @@ This application is based on datasets of movies and TV shows, and allows movie a
 4. Type `test-sample.sql`. This will show the output for the 5 functionalities we have so far.
 
 # Instruction on User Interface
-Type 'npm start' in front-end to start. 
-The program currently has a search bar and filers. 
+Type `npm start` in front-end to start.
+The program currently has a search bar and filters. 
 
 # Members
 Claire Sheng
