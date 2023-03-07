@@ -7,7 +7,8 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 function App() {
     const [data, setData] = useState([]);
-    const handleFormSubmit = async (input) => {
+    const handleFormSubmit = async (event, input) => {
+        event.preventDefault();
         await axios.post('http://localhost:5000', {data: input}).then(
             res => {
                 setData(res.data)

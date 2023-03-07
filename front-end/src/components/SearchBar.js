@@ -11,7 +11,7 @@ const SearchBar = (props) => {
     }
 
     return (
-        <Form>
+        <Form onSubmit={(event) => props.handleFormSubmit(event, searchTerm)}>
             <Row style={{textAlign: 'center', display:'block'}}>
                 <h3>
                     App name
@@ -26,7 +26,7 @@ const SearchBar = (props) => {
                                   value={searchTerm}
                                   onChange={handleSearchTermChange} />
                 </Col>
-                <Button size="lg" column="lg" lg={2} onClick={() => props.handleFormSubmit(searchTerm)}>
+                <Button size="lg" column="lg" lg={2}>
                     Search
                 </Button>
             </Row>
