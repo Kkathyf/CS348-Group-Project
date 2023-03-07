@@ -21,7 +21,7 @@ In the same MySQL server as in installation:
 # Instruction on data-driven application
 1. Go to the `back-end` folder and type `python3 main.py` in to start.
 2. Go to the `front-end` folder and type `npm install`.
-3. In the same folder, type `npm start` in front-end, and this will display a webpage.
+3. In the same folder, type `npm start`, and this will display a webpage.
 
 # Funcionalties of database-driven application
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
