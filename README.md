@@ -19,9 +19,9 @@ In the same MySQL server as in installation:
 5. Leave both a rate and a comment on a specific movie.
 
 # Instruction on data-driven application
-1. Type `python3 main.py` in back-end to start.
-2. Type `npm install` in front-end.
-3. Type `npm start` in front-end, and this will display a webpage.
+1. Go to the `back-end` folder and type `python3 main.py` in to start.
+2. Go to the `front-end` folder and type `npm install`.
+3. In the same folder(`front-end`), type `npm start` in front-end, and this will display a webpage.
 
 # Funcionalties of database-driven application
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
