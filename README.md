@@ -5,12 +5,15 @@ This application is based on datasets of movies and TV shows, and allows movie a
 # Installation
 1. In the MySQL server, run the initial.sql by `source initial.sql;`, creates a user with name 'user1' and password 'Password0!'.
 
-# Funcionalties
+# Funcionalties of Mysql
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
 2. Find all movies with rating in a specific range. (ex. `> 7.0/10.0`)
 3. Find all movies directed by a specific director. (ex. `Hiner Saleem`)
 4. Find movies with `top-n` ratings. (ps. now only support `n <= 4`)
 5. Leave both a rate and a comment on a specific movie.
+
+# Funcionalties of database-driven application
+1. View information about the movie selected based on the name. (ex. `The Matrix`)
 
 # Instruction on Mysql
 1. log into Mysql using your username and password.
