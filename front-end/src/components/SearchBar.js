@@ -26,7 +26,7 @@ const SearchBar = (props) => {
                                   value={searchTerm}
                                   onChange={handleSearchTermChange} />
                 </Col>
-                <Button size="lg" column="lg" lg={2}>
+                <Button type="submit" size="lg" column="lg" lg={2}>
                     Search
                 </Button>
             </Row>
