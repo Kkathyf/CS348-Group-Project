@@ -4,8 +4,8 @@ import mysql.connector
 def connect(searchTerm):
     try:
         # establish connection
-        cnx = mysql.connector.connect(user='root',
-                                      password='12345678',
+        cnx = mysql.connector.connect(user='user1',
+                                      password='Password0!',
                                       host='localhost',
                                       database='CS348_MOVIE_DB')
 
