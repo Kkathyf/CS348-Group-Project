@@ -4,18 +4,14 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     }
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        //onSearch(searchTerm);
-    }
 
     return (
-        <Form onSubmit={handleFormSubmit}>
+        <Form>
             <Row style={{textAlign: 'center', display:'block'}}>
                 <h3>
                     App name
@@ -30,7 +26,7 @@ const SearchBar = () => {
                                   value={searchTerm}
                                   onChange={handleSearchTermChange} />
                 </Col>
-                <Button size="lg" column="lg" lg={2}>
+                <Button size="lg" column="lg" lg={2} onClick={() => props.handleFormSubmit(searchTerm)}>
                     Search
                 </Button>
             </Row>

@@ -1,7 +1,7 @@
 import mysql.connector
 
 
-def connect():
+def connect(searchTerm):
     try:
         # establish connection
         cnx = mysql.connector.connect(user='root',
@@ -12,30 +12,16 @@ def connect():
         # create a cursor
         cursor = cnx.cursor()
 
-        with open('../sample-data.sql', 'r') as file:
-            sql_data = file.read()
-
-        with open('../test-sample.sql', 'r') as file:
-            sql_test = file.read()
-
+        sql_query = 'SELECT *  FROM Movie ' + searchTerm
 
         # execute the SQL script
-        for result in cursor.execute(sql_data, multi=True):
-            if result.with_rows:
-                rows = result.fetchall()
-                print(rows)
-
-        for result in cursor.execute(sql_test, multi=True):
-            if result.with_rows:
-                rows = result.fetchall()
-                print(rows)
-
-        # commit changes and close connection
-        cnx.commit()
-
-        # close cursor and connection
+        cursor.execute(sql_query)
+        data = cursor.fetchall()
         cursor.close()
         cnx.close()
+        return data
+
+        # close cursor and connection
     except Exception as e:
         # handle the exception
         print("An error occurred: ", e)
