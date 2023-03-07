@@ -3,8 +3,7 @@
 This application is based on datasets of movies and TV shows, and allows movie and TV show fans to search, view, rate and leave comments for each movie and TV show.
 
 # Installation
-1. In the MySQL server, run the initial.sql by `source initial.sql;` and you can see a sample database on movies.
-2. Run php server locally with `php -S 127.0.0.1:8000` and you can see the information on the database by hitting the webpage `http://127.0.0.1:8000/test.php`.
+1. In the MySQL server, run the initial.sql by `source initial.sql;`, creates a user with name 'user1' and password 'Password0!'.
 
 # Funcionalties
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
@@ -19,9 +18,13 @@ This application is based on datasets of movies and TV shows, and allows movie a
 3. Type `sample-data.sql`. This will insert some sample data into the tables.
 4. Type `test-sample.sql`. This will show the output for the 5 functionalities we have so far.
 
+# Instruction on Back End
+Type `python3 main.py` in back-end to start.
+
 # Instruction on User Interface
-1. Type `python3 main.py` in back-end.
-2. Type `npm start` in front-end to start.
+1. `npm install`
+2. `npm start`
+
 The program currently supports the search feature.
 
 # Members
