@@ -109,10 +109,20 @@ BEGIN
     WHERE id = NEW.rid;
 END$$
 
+CREATE TRIGGER insert_into_genre_duplicate
+  BEFORE INSERT ON genre
+  FOR EACH ROW
+BEGIN
+  IF EXISTS (SELECT 1 FROM genre WHERE type = NEW.type) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Type already exists';
+  END IF;
+END$$
+
 DELIMITER ;
 
 
 -- Create users
-CREATE user 'user1'@'localhost' identified by 'Password0!'; 
+CREATE user IF NOT EXISTS 'user1'@'localhost' identified by 'Password0!'; 
 GRANT all on CS348_MOVIE_DB.* to 'user1'@'localhost'; 
 ALTER user 'user1'@'localhost' identified with mysql_native_password by 'Password0!';
