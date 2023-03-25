@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, send_file, jsonify
 from flask_cors import CORS, cross_origin
-from connection import connect
+from connection import connect, connects
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -60,4 +60,4 @@ def add_review():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(port=8080, debug=False)
