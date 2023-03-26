@@ -47,15 +47,45 @@ def top_n():
 @app.route('/add_review', methods=['POST'])
 def add_review():
     if request.method == 'POST':
+        # review json content
+        # reviews['rname']: reviewer name
+        # reviews['mid']: movie id
+        # reviews['rating']: rating, a number
+        # reviews['comment']: string
         reviews = request.get_json()
         result = ""
-        if (connect("SELECT * FROM Rating WHERE WHERE rid = %d, mid = %d" % (reviews['rid'], reviews['mid']))):
+        reviewer = connects(f"SELECT * FROM Reviewer WHERE username = \"{reviews['rname']}\"")
+        # if reviewer exists
+        rid = 0
+        if not reviewer:
+            # reviewer not exists
+            latest = connects("SELECT id FROM Reviewer LIMIT 1 ORDER BY id DESC")
+            latest_id = latest[0][0]
+            rid = latest_id + 1
+            connects(f"INSERT INTO Reviewer VALUES ({rid}, \"{reviews['rname']}\", 0)")
+        else:
+            rid = reviewer[0][0]
+        if (connects("SELECT * FROM Rating WHERE rid = %d AND mid = %d" % (reviews['rid'], reviews['mid']))):
         # if review already exists
-            connect("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
+            connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
             result = "Comment updated"
         else:
-            connect("INSERT INTO Rating values (%d, %d, %.1f, %s)" % (reviews['rid'], reviews['mid'], reviews['rating'], reviews['comment']))
+            connects("INSERT INTO Rating values (%d, %d, %.1f, %s)" % (rid, reviews['mid'], reviews['rating'], reviews['comment']))
             result = "Comment added"
+        return jsonify(result)
+
+# feature for updating rating
+@app.route('/update_review', methods=['POST'])
+def update_review():
+    if request.method == 'POST':
+        # review json content
+        # reviews['rid']: reviewer id
+        # reviews['mid']: movie id
+        # reviews['rating']: rating, a number
+        # reviews['comment']: string
+        reviews = request.get_json()
+        connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
+        result = "Update success"
         return jsonify(result)
 
 
