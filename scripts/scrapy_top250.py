@@ -3,7 +3,7 @@
 # need to install from:
 # pip install cinemagoer
 from imdb import Cinemagoer
-
+import os
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
@@ -85,11 +85,14 @@ insert_movie_genres += "COMMIT;\n"
 insert_directions += "COMMIT;\n"
 insert_casts += "COMMIT;\n"
 
-file = open("production-data.sql", "w", encoding="utf-8")
+cur_path = os.path.dirname(__file__)
+new_path = os.path.relpath('..\\sql\\sample-data.sql', cur_path)
+
+file = open(new_path, "w", encoding="utf-8")
 file.write(insert_movies)
 file.close()
 
-file = open("production-data.sql", "a", encoding="utf-8")
+file = open(new_path, "a", encoding="utf-8")
 file.write(insert_actors)
 file.write(insert_genres)
 file.write(insert_directors)
