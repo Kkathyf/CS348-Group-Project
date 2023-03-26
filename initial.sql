@@ -98,8 +98,6 @@ BEGIN
   WHERE id = NEW.mid;
 END$$
 
-
-
 CREATE TRIGGER update_reviewer_num_of_ratings
   AFTER INSERT ON Rating
   FOR EACH ROW
