@@ -3,7 +3,7 @@
 # need to install from:
 # pip install cinemagoer
 from imdb import Cinemagoer
-
+import os
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
@@ -27,7 +27,7 @@ def insert_person(type, person):
     return f"INSERT IGNORE INTO {type} VALUES ({person_id}, \"{first_name}\", \"{surname}\");\n"
 
 
-top = ia.get_top250_movies()
+top = ia.get_top250_movies()[:10]
 
 insert_movies = "BEGIN;\n"
 insert_actors = "BEGIN;\n"
@@ -74,9 +74,10 @@ for movie in top:
         insert_directions += insert_direction
 
     count += 1
-    print("processing movie", count)
+    print("processing movie ", count)
 
-print("done!")
+print('done!')
+
 insert_movies += "COMMIT;\n"
 insert_actors += "COMMIT;\n"
 insert_genres += "COMMIT;\n"
@@ -85,11 +86,15 @@ insert_movie_genres += "COMMIT;\n"
 insert_directions += "COMMIT;\n"
 insert_casts += "COMMIT;\n"
 
-file = open("production-data.sql", "w", encoding="utf-8")
+
+cur_path = os.path.dirname(__file__)
+new_path = os.path.relpath('../sql/sample-data.sql', cur_path)
+
+file = open(new_path , "w", encoding="utf-8")
 file.write(insert_movies)
 file.close()
 
-file = open("production-data.sql", "a", encoding="utf-8")
+file = open(new_path , "a", encoding="utf-8")
 file.write(insert_actors)
 file.write(insert_genres)
 file.write(insert_directors)
