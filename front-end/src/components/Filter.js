@@ -1,21 +1,20 @@
 import { React, useState } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import Slider from "./Slider";
+import { Navbar, Nav, NavDropdown, Form ,Row} from "react-bootstrap";
+import DropdownMenu from "react-bootstrap/DropdownMenu";
 
-const Filter = () => {
-    /*const [genreShow, setGenreShow] = useState(false);
+const Filter = (props) => {
+    const order = ['Rating High to Low', 'Rating Low to High']
+    const changeOrder = (e) => {
+        const val = e.target.innerHTML;
+        props.setOrder(val);
+    };
 
-    const showGenreDropdown = ()=>{
-        setGenreShow(!genreShow);
-    }
-
-    const hideGenreDropdown = () => {
-        setGenreShow(false);
-    }
-    */
-    const genre = ['Action', 'Science Fiction', 'Adventure','Drama', ' Romance'];
-    const year = ['Before 1970', '1970-1990', '1990-2000','2000-2010', '2022'];
-    const rating = ['below 6.0', '6.0-7.0', '7.0-8.0', '8.0-9.0', 'above 9.0'];
-
+    const displayTopN = (e) => {
+            if (e.target.value !== '') {
+                props.setNum(e.target.value);
+            }
+        };
 
     return (
         <Navbar bg="light" expand="lg">
@@ -23,31 +22,19 @@ const Filter = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Genre" id="genre-dropdown"
-                                /* show={genreShow}
-                                 onMouseEnter={showGenreDropdown}
-                                 onMouseLeave={hideGenreDropdown}*/
-                    >
-                        {genre.map((item, index) =>
-                            <NavDropdown.Item key={index}>{item}</NavDropdown.Item>
+                    <Slider value={props.value} setValue={props.setValue}></Slider>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Show Top </Form.Label>
+                            <Form.Control type="number" min="0" step="1" placeholder="Enter number" defaultValue="20" onChange={displayTopN} />
+                            <Form.Label> Movies </Form.Label>
+                        </Form.Group>
+                    </Form>
+
+                    <NavDropdown title={`Order By: ${props.order}`} id="order-dropdown">
+                        {order.map((item, index) =>
+                            <NavDropdown.Item key={index} onClick={changeOrder}>{item}</NavDropdown.Item>
                         )}
-                    </NavDropdown>
-                    <NavDropdown title="Year" id="year-dropdown"
-                                 //show={show}
-                                 //onMouseEnter={showDropdown}
-                                 //onMouseLeave={hideDropdown}>
-                        >
-                        {year.map((item, index) =>
-                        <NavDropdown.Item key={index}>{item}</NavDropdown.Item>
-                    )}
-                    </NavDropdown>
-                    <NavDropdown title="Rating" id="rating-dropdown"
-                                     //show={show}
-                                     //onMouseEnter={showDropdown}
-                                     //onMouseLeave={hideDropdown}>
-                    >{rating.map((item, index) =>
-                        <NavDropdown.Item key={index}>{item}</NavDropdown.Item>
-                    )}
                     </NavDropdown>
 
                 </Nav>

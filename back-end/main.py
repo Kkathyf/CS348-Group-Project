@@ -6,25 +6,34 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# api for feature 1
+# api for feature 1,2,3,4
 @app.route("/", methods=['POST', 'GET'])
 def main():
     if request.method == 'GET':
-        data = connect('')
-        # print(jsonify(data))
+        data = connect("SELECT * FROM Movie limit 20")
         return jsonify(data)
     elif request.method == 'POST':
         searchTerm = request.get_json()
-        data = connect("WHERE name LIKE '%" + searchTerm['data'] + "%'")
-        print(data)
+        sql_str = "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
+                  "%' and avg_rate >=" + str(searchTerm['grt_n'])
+        if searchTerm['order'] == 'Rating High to Low':
+            sql_str += ' ORDER BY (avg_rate) DESC '
+        elif searchTerm['order'] == 'Rating Low to High':
+            sql_str += ' ORDER BY (avg_rate) ASC '
+
+        sql_str += " limit " + str(searchTerm['num'])
+
+        # print(sql_str)
+        data = connect(sql_str)
         return jsonify(data)
+
 
 # api for feature 2
 @app.route('/grt_n', methods=['POST'])
-def grt_n():
+def grt_n(n):
     if request.method == 'POST':
-        n_ratings = request.get_json()
-        data = connect("WHERE avg_rate > %.1f" % (n_ratings['n']))
+        # n_ratings = request.get_json()
+        data = connect("WHERE avg_rate > %.1f" % n)
         return jsonify(data)
 
 # api for feature 3
@@ -87,4 +96,4 @@ def update_review():
 
 
 if __name__ == '__main__':
-    app.run(port=8080, debug=False)
+    app.run(port=5000, debug=False)

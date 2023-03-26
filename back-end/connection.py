@@ -1,7 +1,7 @@
 import mysql.connector
 
 # connect follows SELECT * FROM Movie format
-def connect(searchTerm):
+def connect(query):
     try:
         # establish connection
         cnx = mysql.connector.connect(user='user1',
@@ -12,10 +12,8 @@ def connect(searchTerm):
         # create a cursor
         cursor = cnx.cursor()
 
-        sql_query = 'SELECT *  FROM Movie ' + searchTerm
-
         # execute the SQL script
-        cursor.execute(sql_query)
+        cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
         cnx.close()

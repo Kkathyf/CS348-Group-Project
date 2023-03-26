@@ -16,7 +16,7 @@ const Layout = (props) => {
                 <tr>
                     <th>Title</th>
                     <th>Year</th>
-                    <th>Runtime</th>
+                    <th>Length</th>
                     <th>Rating</th>
                 </tr>
                 </thead>

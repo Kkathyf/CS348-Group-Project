@@ -5,13 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 const SearchBar = (props) => {
-    const [searchTerm, setSearchTerm] = useState("");
     const handleSearchTermChange = (event) => {
-        setSearchTerm(event.target.value);
+        props.setSearchTerm(event.target.value);
     }
 
     return (
-        <Form onSubmit={(event) => props.handleFormSubmit(event, searchTerm)}>
+        <Form>
             <Row style={{textAlign: 'center', display:'block'}}>
                 <h3>
                     App name
@@ -23,7 +22,7 @@ const SearchBar = (props) => {
                     <Form.Control size="lg"
                                   type="text"
                                   placeholder="Search..."
-                                  value={searchTerm}
+                                  value={props.searchTerm}
                                   onChange={handleSearchTermChange} />
                 </Col>
                 <Button type="submit" size="lg" column="lg" lg={2}>
