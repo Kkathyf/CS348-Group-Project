@@ -10,11 +10,11 @@ In the same MySQL server as in installation:
 1. Type `sample-data.sql`. This will insert some sample data into the tables.
 2. Type `test-sample.sql`. This will show the output for the 5 functionalities we have so far.
 
-# Instruction on MySQL-sample
+# Instruction on MySQL-production
 In the same MySQL server as in installation:
 1. Type `sample-data.sql`. This will insert some sample data into the tables.
 2. Type `test-sample.sql`. This will show the output for the 5 functionalities we have so far.
-3.  1. 
+    1.
 
 # Funcionalties of MySQL
 1. View information about the movie selected based on the name. (ex. `The Matrix`)
