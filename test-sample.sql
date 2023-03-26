@@ -1,19 +1,19 @@
 # Feature 1:
 SELECT *
 FROM Movie
-WHERE name LIKE "%The Matrix%";
+WHERE name LIKE "%The Lord of the Rings%";
 
 # Feature 2:
 SELECT name
 FROM Movie
-WHERE avg_rate > 7.0;
+WHERE avg_rate > 9.0;
 
 # Feature 3:
 SELECT name
 FROM Movie
 WHERE id in (SELECT mid
 	     FROM Director join Direction on id = did
-	     WHERE first_name = "Hiner" and surname = "Saleem");
+	     WHERE first_name = "Frank" and surname = "Darabont");
 
 # Feature 4:
 SELECT name
@@ -22,6 +22,6 @@ FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r
 WHERE r <= 3;
 
 # Feature 5:
-INSERT INTO Rating VALUES (1, 133093, 6.5, "I like this movie.");
+INSERT INTO Rating VALUES (1, 0111161, 9.0, "I like this movie.");
 SELECT *
 FROM Rating;
