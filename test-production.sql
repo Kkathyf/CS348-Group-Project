@@ -7,23 +7,37 @@ WHERE name LIKE "%The Lord of the Rings%";
 SELECT name
 FROM Movie
 WHERE avg_rate < 8.5;
+LIMIT 10;
 
 # Feature 3:
 SELECT name
 FROM Movie
-WHERE id in (SELECT mid
-	     FROM Director join Direction on id = did
-	     WHERE first_name = "Frank" and surname = "Darabont");
+ORDER BY (avg_rate) DESC
+LIMIT 10;
 
 # Feature 4:
 SELECT name
-FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r
-      FROM Movie) as T
-WHERE r <= 20;
+FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r FROM Movie) as T
+WHERE r <= 10;
 
 # Feature 5:
-INSERT INTO Reviewer VALUE(1, 'CS348', 0);
+INSERT INTO Reviewer (username, num_of_ratings) VALUES ('ily348', 0);
+INSERT INTO Rating (mid, rate, comment) VALUES (0111161, 9.0, "I love.");
+INSERT INTO Reviewer (username, num_of_ratings) VALUES ('cs348', 0);
+INSERT INTO Rating (mid, rate, comment) VALUES (0111161, 9.3, "I love 2.");
+SELECT * FROM Rating;
 
-INSERT INTO Rating VALUES (1, 0111161, 9.0, "I like this movie.");
-SELECT *
-FROM Rating;
+# Feature 6:
+UPDATE Rating
+SET
+	rate = 4.0,
+	comment = "Boring"
+WHERE mid = 0111161 and rid = (SELECT id FROM Reviewer WHERE username = 'cs348');
+UPDATE Rating
+SET
+	rate = 9.8,
+	comment = "Super love"
+WHERE mid = 0111161 and rid = (SELECT id FROM Reviewer WHERE username = 'ily348');
+SELECT * FROM Rating;
+
+

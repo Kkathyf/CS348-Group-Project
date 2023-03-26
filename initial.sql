@@ -70,15 +70,16 @@ CREATE TABLE Movie_Genre (
 DROP TABLE IF EXISTS Reviewer;
 
 CREATE TABLE Reviewer (
-  id INT NOT NULL PRIMARY KEY,
+  id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(255),
-  num_of_ratings INT
+  num_of_ratings INT,
+  PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS Rating;
 
 CREATE TABLE Rating (
-  rid INT NOT NULL,
+  rid INT NOT NULL AUTO_INCREMENT,
   mid INT NOT NULL,
   rate DECIMAL(2,1),
   comment VARCHAR(255),

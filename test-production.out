@@ -207,15 +207,24 @@ mysql> source test-production.sql
 | The Father                                                           |
 | Spider-Man: No Way Home                                              |
 +----------------------------------------------------------------------+
-195 rows in set (0.01 sec)
+195 rows in set (0.00 sec)
 
-+--------------------------+
-| name                     |
-+--------------------------+
-| The Shawshank Redemption |
-| The Green Mile           |
-+--------------------------+
-2 rows in set (0.00 sec)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
++-----------------------------------------------+
+| name                                          |
++-----------------------------------------------+
+| The Shawshank Redemption                      |
+| The Godfather                                 |
+| The Lord of the Rings: The Return of the King |
+| 12 Angry Men                                  |
+| The Dark Knight                               |
+| Schindler's List                              |
+| The Godfather Part II                         |
+| Pulp Fiction                                  |
+| Jai Bhim                                      |
+| Fight Club                                    |
++-----------------------------------------------+
+10 rows in set (0.00 sec)
 
 +---------------------------------------------------+
 | name                                              |
@@ -235,35 +244,37 @@ mysql> source test-production.sql
 | The Lord of the Rings: The Two Towers             |
 | Inception                                         |
 | Jai Bhim                                          |
-| One Flew Over the Cuckoo's Nest                   |
-| Star Wars: Episode V - The Empire Strikes Back    |
-| Goodfellas                                        |
-| The Matrix                                        |
-| It's a Wonderful Life                             |
-| Seven Samurai                                     |
-| Harakiri                                          |
-| Star Wars: Episode IV - A New Hope                |
-| The Silence of the Lambs                          |
-| Terminator 2: Judgment Day                        |
-| Se7en                                             |
-| Life Is Beautiful                                 |
-| The Green Mile                                    |
-| Saving Private Ryan                               |
-| Spirited Away                                     |
-| City of God                                       |
-| Interstellar                                      |
 +---------------------------------------------------+
-32 rows in set (0.00 sec)
+15 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
 
 Query OK, 1 row affected (0.01 sec)
 
 Query OK, 1 row affected (0.00 sec)
 
-+-----+--------+------+--------------------+
-| rid | mid    | rate | comment            |
-+-----+--------+------+--------------------+
-|   1 | 111161 |  9.0 | I like this movie. |
-+-----+--------+------+--------------------+
-1 row in set (0.00 sec)
+Query OK, 1 row affected (0.00 sec)
+
++-----+--------+------+-----------+
+| rid | mid    | rate | comment   |
++-----+--------+------+-----------+
+|   1 | 111161 |  9.0 | I love.   |
+|   2 | 111161 |  9.3 | I love 2. |
++-----+--------+------+-----------+
+2 rows in set (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++-----+--------+------+------------+
+| rid | mid    | rate | comment    |
++-----+--------+------+------------+
+|   1 | 111161 |  9.8 | Super love |
+|   2 | 111161 |  4.0 | Boring     |
++-----+--------+------+------------+
+2 rows in set (0.00 sec)
 
 mysql> quit

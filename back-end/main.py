@@ -59,10 +59,7 @@ def add_review():
         rid = 0
         if not reviewer:
             # reviewer not exists
-            latest = connects("SELECT id FROM Reviewer LIMIT 1 ORDER BY id DESC")
-            latest_id = latest[0][0]
-            rid = latest_id + 1
-            connects(f"INSERT INTO Reviewer VALUES ({rid}, \"{reviews['rname']}\", 0)")
+            connects(f"INSERT INTO Reviewer (username, num_of_ratings) VALUES (\"{reviews['rname']}\", 0)")
         else:
             rid = reviewer[0][0]
         if (connects("SELECT * FROM Rating WHERE rid = %d AND mid = %d" % (reviews['rid'], reviews['mid']))):

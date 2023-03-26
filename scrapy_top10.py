@@ -86,8 +86,6 @@ insert_movie_genres += "COMMIT;\n"
 insert_directions += "COMMIT;\n"
 insert_casts += "COMMIT;\n"
 
-insert_sample_user = "BEGIN;\nINSERT INTO Reviewer VALUE(1, 'CS348', 0);\nCOMMIT;\n"
-
 file = open("sample-data.sql", "w", encoding="utf-8")
 file.write(insert_movies)
 file.close()
@@ -99,5 +97,4 @@ file.write(insert_directors)
 file.write(insert_movie_genres)
 file.write(insert_directions)
 file.write(insert_casts)
-file.write(insert_sample_user)
 file.close()

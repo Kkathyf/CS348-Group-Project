@@ -11,17 +11,23 @@ WHERE avg_rate > 9.0;
 # Feature 3:
 SELECT name
 FROM Movie
-WHERE id in (SELECT mid
-	     FROM Director join Direction on id = did
-	     WHERE first_name = "Frank" and surname = "Darabont");
+ORDER BY (avg_rate) ASC;
 
 # Feature 4:
 SELECT name
-FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r
-      FROM Movie) as T
+FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) as r FROM Movie) as T
 WHERE r <= 3;
 
 # Feature 5:
-INSERT INTO Rating VALUES (1, 0111161, 9.0, "I like this movie.");
-SELECT *
-FROM Rating;
+INSERT INTO Reviewer (username, num_of_ratings) VALUES ('cs348', 0);
+INSERT INTO Rating (mid, rate, comment) VALUES (0111161, 9.0, "I love.");
+SELECT * FROM Rating;
+
+# Feature 6:
+UPDATE Rating
+SET
+	rate = 4.0,
+	comment = "Boring"
+WHERE mid = 0111161 and rid = (SELECT id FROM Reviewer WHERE username = 'cs348');
+SELECT * FROM Rating;
+
