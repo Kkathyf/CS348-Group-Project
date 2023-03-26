@@ -6,7 +6,7 @@ WHERE name LIKE "%The Lord of the Rings%";
 # Feature 2:
 SELECT name
 FROM Movie
-WHERE avg_rate < 8.5;
+WHERE avg_rate < 8.5
 LIMIT 10;
 
 # Feature 3:

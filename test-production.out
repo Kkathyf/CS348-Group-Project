@@ -8,208 +8,22 @@ mysql> source test-production.sql
 +--------+---------------------------------------------------+------+---------+----------+----------------+
 3 rows in set (0.00 sec)
 
-+----------------------------------------------------------------------+
-| name                                                                 |
-+----------------------------------------------------------------------+
-| The Kid                                                              |
-| Sherlock Jr.                                                         |
-| The Gold Rush                                                        |
-| Metropolis                                                           |
-| The General                                                          |
-| The Passion of Joan of Arc                                           |
-| M                                                                    |
-| It Happened One Night                                                |
-| Gone with the Wind                                                   |
-| Mr. Smith Goes to Washington                                         |
-| The Wizard of Oz                                                     |
-| The Grapes of Wrath                                                  |
-| The Great Dictator                                                   |
-| Rebecca                                                              |
-| Citizen Kane                                                         |
-| To Be or Not to Be                                                   |
-| Double Indemnity                                                     |
-| The Best Years of Our Lives                                          |
-| Bicycle Thieves                                                      |
-| The Treasure of the Sierra Madre                                     |
-| The Third Man                                                        |
-| All About Eve                                                        |
-| Rashomon                                                             |
-| Sunset Blvd.                                                         |
-| Ikiru                                                                |
-| Singin' in the Rain                                                  |
-| The Wages of Fear                                                    |
-| Tokyo Story                                                          |
-| Dial M for Murder                                                    |
-| On the Waterfront                                                    |
-| Pather Panchali                                                      |
-| The Bridge on the River Kwai                                         |
-| Paths of Glory                                                       |
-| The Seventh Seal                                                     |
-| Wild Strawberries                                                    |
-| Witness for the Prosecution                                          |
-| Vertigo                                                              |
-| Ben-Hur                                                              |
-| North by Northwest                                                   |
-| The 400 Blows                                                        |
-| Some Like It Hot                                                     |
-| The Apartment                                                        |
-| Judgment at Nuremberg                                                |
-| Yojimbo                                                              |
-| Lawrence of Arabia                                                   |
-| To Kill a Mockingbird                                                |
-| Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb |
-| The Great Escape                                                     |
-| High and Low                                                         |
-| The Battle of Algiers                                                |
-| For a Few Dollars More                                               |
-| The Sound of Music                                                   |
-| Persona                                                              |
-| Cool Hand Luke                                                       |
-| 2001: A Space Odyssey                                                |
-| A Clockwork Orange                                                   |
-| The Exorcist                                                         |
-| The Sting                                                            |
-| Chinatown                                                            |
-| Dersu Uzala                                                          |
-| Monty Python and the Holy Grail                                      |
-| Barry Lyndon                                                         |
-| Jaws                                                                 |
-| Network                                                              |
-| Rocky                                                                |
-| Taxi Driver                                                          |
-| The Deer Hunter                                                      |
-| Life of Brian                                                        |
-| The Elephant Man                                                     |
-| Raging Bull                                                          |
-| The Shining                                                          |
-| Das Boot                                                             |
-| Raiders of the Lost Ark                                              |
-| Blade Runner                                                         |
-| The Thing                                                            |
-| Star Wars: Episode VI - Return of the Jedi                           |
-| Scarface                                                             |
-| Amadeus                                                              |
-| Once Upon a Time in America                                          |
-| The Terminator                                                       |
-| Ran                                                                  |
-| Aliens                                                               |
-| Come and See                                                         |
-| Platoon                                                              |
-| Stand by Me                                                          |
-| Full Metal Jacket                                                    |
-| Die Hard                                                             |
-| My Neighbor Totoro                                                   |
-| Dead Poets Society                                                   |
-| Indiana Jones and the Last Crusade                                   |
-| Dances with Wolves                                                   |
-| Aladdin                                                              |
-| Reservoir Dogs                                                       |
-| Unforgiven                                                           |
-| Groundhog Day                                                        |
-| In the Name of the Father                                            |
-| Jurassic Park                                                        |
-| Before Sunrise                                                       |
-| Braveheart                                                           |
-| Casino                                                               |
-| La haine                                                             |
-| Heat                                                                 |
-| Toy Story                                                            |
-| Fargo                                                                |
-| Trainspotting                                                        |
-| The Big Lebowski                                                     |
-| Children of Heaven                                                   |
-| Good Will Hunting                                                    |
-| L.A. Confidential                                                    |
-| Princess Mononoke                                                    |
-| The Truman Show                                                      |
-| Lock, Stock and Two Smoking Barrels                                  |
-| The Iron Giant                                                       |
-| The Sixth Sense                                                      |
-| American Beauty                                                      |
-| Requiem for a Dream                                                  |
-| Monsters, Inc.                                                       |
-| Snatch                                                               |
-| Memento                                                              |
-| Amélie                                                               |
-| Amores Perros                                                        |
-| Catch Me If You Can                                                  |
-| Finding Nemo                                                         |
-| Kill Bill: Vol. 1                                                    |
-| A Beautiful Mind                                                     |
-| The Incredibles                                                      |
-| Pirates of the Caribbean: The Curse of the Black Pearl               |
-| Eternal Sunshine of the Spotless Mind                                |
-| Howl's Moving Castle                                                 |
-| Memories of Murder                                                   |
-| Inglourious Basterds                                                 |
-| Downfall                                                             |
-| Oldboy                                                               |
-| Batman Begins                                                        |
-| Before Sunset                                                        |
-| Ratatouille                                                          |
-| Hotel Rwanda                                                         |
-| The Lives of Others                                                  |
-| Million Dollar Baby                                                  |
-| V for Vendetta                                                       |
-| Toy Story 3                                                          |
-| Pan's Labyrinth                                                      |
-| There Will Be Blood                                                  |
-| My Father and My Son                                                 |
-| No Country for Old Men                                               |
-| Into the Wild                                                        |
-| How to Train Your Dragon                                             |
-| WALL·E                                                               |
-| Mary and Max                                                         |
-| Like Stars on Earth                                                  |
-| The Wolf of Wall Street                                              |
-| Hachi: A Dog's Tale                                                  |
-| Up                                                                   |
-| Shutter Island                                                       |
-| 3 Idiots                                                             |
-| Harry Potter and the Deathly Hallows: Part 2                         |
-| Gran Torino                                                          |
-| Incendies                                                            |
-| Warrior                                                              |
-| The Secret in Their Eyes                                             |
-| The Dark Knight Rises                                                |
-| Mad Max: Fury Road                                                   |
-| Prisoners                                                            |
-| The Help                                                             |
-| Top Gun: Maverick                                                    |
-| A Separation                                                         |
-| Django Unchained                                                     |
-| Spotlight                                                            |
-| Ford v Ferrari                                                       |
-| Rush                                                                 |
-| 12 Years a Slave                                                     |
-| Inside Out                                                           |
-| The Hunt                                                             |
-| Hacksaw Ridge                                                        |
-| Gone Girl                                                            |
-| The Grand Budapest Hotel                                             |
-| Coco                                                                 |
-| Wild Tales                                                           |
-| Room                                                                 |
-| Logan                                                                |
-| The Handmaiden                                                       |
-| Avengers: Infinity War                                               |
-| Avengers: Endgame                                                    |
-| Spider-Man: Into the Spider-Verse                                    |
-| Klaus                                                                |
-| Three Billboards Outside Ebbing, Missouri                            |
-| Dangal                                                               |
-| Your Name.                                                           |
-| Green Book                                                           |
-| Joker                                                                |
-| Capernaum                                                            |
-| Hamilton                                                             |
-| 1917                                                                 |
-| The Father                                                           |
-| Spider-Man: No Way Home                                              |
-+----------------------------------------------------------------------+
-195 rows in set (0.00 sec)
++------------------------------+
+| name                         |
++------------------------------+
+| The Kid                      |
+| Sherlock Jr.                 |
+| The Gold Rush                |
+| Metropolis                   |
+| The General                  |
+| The Passion of Joan of Arc   |
+| M                            |
+| It Happened One Night        |
+| Gone with the Wind           |
+| Mr. Smith Goes to Washington |
++------------------------------+
+10 rows in set (0.01 sec)
 
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
 +-----------------------------------------------+
 | name                                          |
 +-----------------------------------------------+
@@ -261,7 +75,7 @@ Query OK, 1 row affected (0.00 sec)
 |   1 | 111161 |  9.0 | I love.   |
 |   2 | 111161 |  9.3 | I love 2. |
 +-----+--------+------+-----------+
-2 rows in set (0.01 sec)
+2 rows in set (0.00 sec)
 
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
