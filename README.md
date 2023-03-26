@@ -27,7 +27,7 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 3. Find all movies directed by a specific director. (ex. `Frank Darabont`)
 4. Find movies with `top-n` ratings. (ex. `n <= 10`)
 5. Leave both a rating and a comment on a specific movie.
-6. ...
+6. Update the given rate and comments based on the user name.
 
 # Data-driven application
 ## Installation
