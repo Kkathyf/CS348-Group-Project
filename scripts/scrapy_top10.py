@@ -88,7 +88,7 @@ insert_casts += "COMMIT;\n"
 
 
 cur_path = os.path.dirname(__file__)
-new_path = os.path.relpath('..\\sql\\sample-data.sql', cur_path)
+new_path = os.path.relpath('../sql/sample-data.sql', cur_path)
 
 file = open(new_path , "w", encoding="utf-8")
 file.write(insert_movies)
