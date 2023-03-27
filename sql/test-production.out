@@ -2,9 +2,9 @@ mysql> source test-production.sql
 +--------+---------------------------------------------------+------+---------+----------+----------------+
 | id     | name                                              | year | runtime | avg_rate | num_of_ratings |
 +--------+---------------------------------------------------+------+---------+----------+----------------+
-| 120737 | The Lord of the Rings: The Fellowship of the Ring | 2001 |     178 |     8.80 |              0 |
-| 167260 | The Lord of the Rings: The Return of the King     | 2003 |     201 |     9.00 |              0 |
-| 167261 | The Lord of the Rings: The Two Towers             | 2002 |     179 |     8.80 |              0 |
+| 120737 | The Lord of the Rings: The Fellowship of the Ring | 2001 |     178 |     8.80 |        1900616 |
+| 167260 | The Lord of the Rings: The Return of the King     | 2003 |     201 |     9.00 |        1871353 |
+| 167261 | The Lord of the Rings: The Two Towers             | 2002 |     179 |     8.80 |        1689466 |
 +--------+---------------------------------------------------+------+---------+----------+----------------+
 3 rows in set (0.00 sec)
 
@@ -22,7 +22,7 @@ mysql> source test-production.sql
 | Gone with the Wind           |
 | Mr. Smith Goes to Washington |
 +------------------------------+
-10 rows in set (0.01 sec)
+10 rows in set (0.00 sec)
 
 +-----------------------------------------------+
 | name                                          |
@@ -38,7 +38,7 @@ mysql> source test-production.sql
 | Jai Bhim                                      |
 | Fight Club                                    |
 +-----------------------------------------------+
-10 rows in set (0.00 sec)
+10 rows in set (0.01 sec)
 
 +---------------------------------------------------+
 | name                                              |
@@ -63,9 +63,9 @@ mysql> source test-production.sql
 
 Query OK, 1 row affected (0.00 sec)
 
-Query OK, 1 row affected (0.01 sec)
-
 Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
 
 Query OK, 1 row affected (0.00 sec)
 
