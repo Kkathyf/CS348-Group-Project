@@ -11,10 +11,11 @@ const Filter = (props) => {
     };
 
     const displayTopN = (e) => {
-            if (e.target.value !== '') {
-                props.setNum(e.target.value);
-            }
-        };
+        if (e.target.value !== '') {
+        //console.log(e.target.value);
+            props.setNum(e.target.value);
+        }
+    };
 
     return (
         <Navbar bg="light" expand="lg">

@@ -10,7 +10,7 @@ function App() {
     const [order, setOrder] = useState("");
     const [data, setData] = useState([]);
     const [value, setValue] = useState(0);
-    const [num, setNum] = useState(0);
+    const [num, setNum] = useState(20);
 
     useEffect( () => {
         const handleFormSubmit = async () => {
