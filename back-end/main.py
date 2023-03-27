@@ -10,20 +10,20 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/", methods=['POST', 'GET'])
 def main():
     if request.method == 'GET':
-        data = connect("SELECT * FROM Movie limit 20")
+        data = connect("SELECT * FROM Movie ORDER BY (avg_rate) DESC")
         return jsonify(data)
     elif request.method == 'POST':
         searchTerm = request.get_json()
-        sql_str = "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
-                  "%' and avg_rate >=" + str(searchTerm['grt_n'])
+        sql_str = "SELECT * FROM("
+        sql_str += "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
+                  "%' and avg_rate > " + str(searchTerm['grt_n'])
+        sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
         if searchTerm['order'] == 'Rating High to Low':
             sql_str += ' ORDER BY (avg_rate) DESC '
         elif searchTerm['order'] == 'Rating Low to High':
             sql_str += ' ORDER BY (avg_rate) ASC '
 
-        sql_str += " limit " + str(searchTerm['num'])
-
-        # print(sql_str)
+        #print(sql_str)
         data = connect(sql_str)
         return jsonify(data)
 

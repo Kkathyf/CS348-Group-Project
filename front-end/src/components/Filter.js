@@ -11,7 +11,9 @@ const Filter = (props) => {
     };
 
     const displayTopN = (e) => {
-        if (e.target.value !== '') {
+        if (e.target.value == '') {
+            props.setNum(250);
+        } else if (e.target.value !== '') {
         //console.log(e.target.value);
             props.setNum(e.target.value);
         }
@@ -27,7 +29,7 @@ const Filter = (props) => {
                     <Form>
                         <Form.Group>
                             <Form.Label>Show Top </Form.Label>
-                            <Form.Control type="number" min="0" step="1" placeholder="Enter number" defaultValue="20" onChange={displayTopN} />
+                            <Form.Control type="number" min="0" step="1" placeholder="Enter number" defaultValue="" onChange={displayTopN} />
                             <Form.Label> Movies </Form.Label>
                         </Form.Group>
                     </Form>

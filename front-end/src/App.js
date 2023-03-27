@@ -7,10 +7,10 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [order, setOrder] = useState("");
+    const [order, setOrder] = useState("Rating High to Low");
     const [data, setData] = useState([]);
-    const [value, setValue] = useState(0);
-    const [num, setNum] = useState(20);
+    const [value, setValue] = useState(7);
+    const [num, setNum] = useState(250);
 
     useEffect( () => {
         const handleFormSubmit = async () => {

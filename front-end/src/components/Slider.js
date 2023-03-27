@@ -7,7 +7,7 @@ const Slider = (props) => {
 
     return (
         <div>
-            <input type="range" min="0" max="10" value={props.value} onChange={handleOnChange} />
+            <input type="range" min="7" max="10" step="0.2" value={props.value} onChange={handleOnChange} />
             <p>Rating &ge; {props.value}</p>
         </div>
     );
