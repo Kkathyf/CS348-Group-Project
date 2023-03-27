@@ -16,7 +16,7 @@ def main():
         searchTerm = request.get_json()
         sql_str = "SELECT * FROM("
         sql_str += "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
-                  "%' and avg_rate > " + str(searchTerm['grt_n'])
+                  "%' and avg_rate >= " + str(searchTerm['grt_n'])
         sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
         if searchTerm['order'] == 'Rating High to Low':
             sql_str += ' ORDER BY (avg_rate) DESC '
