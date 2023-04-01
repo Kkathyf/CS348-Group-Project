@@ -13,7 +13,7 @@ const SearchBar = (props) => {
         <Form>
             <Row style={{textAlign: 'center', display:'block'}}>
                 <h3>
-                    App name
+                    Movie App
                 </h3>
             </Row>
             <br />
@@ -25,14 +25,14 @@ const SearchBar = (props) => {
                                   value={props.searchTerm}
                                   onChange={handleSearchTermChange} />
                 </Col>
-                <Button type="submit" size="lg" column="lg" lg={2}>
-                    Search
-                </Button>
             </Row>
 
 
         </Form>
     );
 }
+//<Button type="submit" size="lg" column="lg" lg={2}>
+//  Search
+//</Button>
 
 export default SearchBar;

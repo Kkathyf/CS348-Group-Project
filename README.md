@@ -24,7 +24,7 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 ## Functionalities
 1. View information about the movie selected based on the name. (ex. `The Lord of the Rings`)
 2. Find all movies with ratings in a specific range. (ex. `> 7.0/10.0`)
-3. Find all movies directed by a specific director. (ex. `Frank Darabont`)
+3. Order all movies by their rate order. (ex. `High-to-Low` or `Low-to-High`)
 4. Find movies with `top-n` ratings. (ex. `n <= 10`)
 5. Leave both a rating and a comment on a specific movie.
 6. Update the given rate and comments based on the user name.
@@ -38,8 +38,11 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
     1. type `npm install` to install dependencies,
     2. In the same folder, type `npm start`, and this will display a webpage.
     
-## Functionalities (To do?)
+## Functionalities
 1. View information about the movie selected based on the name. (ex. `The Lord of the Rings`)
+2. Find all movies with ratings in a specific range. (ex. `> 7.0/10.0`)
+3. Order all movies by their rate order. (ex. `High-to-Low` or `Low-to-High`)
+4. Find movies with `top-n` ratings. (ex. `n <= 10`)
 
 # Members
 Claire Sheng
