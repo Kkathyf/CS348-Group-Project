@@ -46,6 +46,9 @@ Before running the data-driven application, please be sure to load in databases 
 
 # Members
 Claire Sheng
+
 Ganlin Feng
+
 Junyi Liu
+
 Yuming Long
