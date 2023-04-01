@@ -1,21 +1,20 @@
-import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
-} from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<Root />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            {/* ... etc. */}
-        </Route>
-    )
-);
+import Main from './Layout';
+import Comments from './Comment';
+import Contact from './Contact';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>
-);
+function Router() {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+            </Switch>
+        </BrowserRouter>
+    );
+}
+
+export default Router;

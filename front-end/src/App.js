@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
