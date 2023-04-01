@@ -29,7 +29,7 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 6. Update the given rate and comments based on the user name.
 
 # Data-driven application
-Before running the data-driven application, please be sure to load in databases (sample or production).
+## Before running the data-driven application, please be sure to load in databases (sample or production).
 ## Installation
 1. Go to the `back-end` folder,
     1. type ` pip install -r requirements.txt ` to install all python packages,
