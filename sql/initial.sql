@@ -79,7 +79,7 @@ CREATE TABLE Reviewer (
 DROP TABLE IF EXISTS Rating;
 
 CREATE TABLE Rating (
-  rid INT NOT NULL AUTO_INCREMENT,
+  rid INT NOT NULL,
   mid INT NOT NULL,
   rate DECIMAL(2,1),
   comment VARCHAR(255),
