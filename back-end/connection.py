@@ -7,7 +7,8 @@ def connect(query):
         cnx = mysql.connector.connect(user='user1',
                                       password='Password0!',
                                       host='localhost',
-                                      database='CS348_MOVIE_DB')
+                                      database='CS348_MOVIE_DB',
+                                      auth_plugin='mysql_native_password')
 
         # create a cursor
         cursor = cnx.cursor()
@@ -23,4 +24,3 @@ def connect(query):
     except Exception as e:
         # handle the exception
         print("An error occurred: ", e)
-

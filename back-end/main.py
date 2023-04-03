@@ -98,8 +98,8 @@ def add_review():
 def update_review():
     if request.method == 'POST':
         # review json content
-        # reviews['rid']: reviewer id
-        # reviews['mid']: movie id
+        # reviews['rname']: reviewer name
+        # reviews['mname']: movie name
         # reviews['rating']: rating, a number
         # reviews['comment']: string
         review = request.get_json()
@@ -108,6 +108,7 @@ def update_review():
         rid = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         # print(rid)
         connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment'])  +"' WHERE rid = " +  str(rid[0][0]) + " and mid = "+  str(review['mid']))
+
         result = "Update success"
         return jsonify(result)
 

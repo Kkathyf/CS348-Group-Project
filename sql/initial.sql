@@ -79,7 +79,7 @@ CREATE TABLE Reviewer (
 DROP TABLE IF EXISTS Rating;
 
 CREATE TABLE Rating (
-  rid INT NOT NULL AUTO_INCREMENT,
+  rid INT NOT NULL,
   mid INT NOT NULL,
   rate DECIMAL(2,1),
   comment VARCHAR(255),
@@ -96,6 +96,17 @@ CREATE TRIGGER update_movie_rating
 BEGIN
   UPDATE Movie
   SET avg_rate = (avg_rate * num_of_ratings + NEW.rate) / (num_of_ratings + 1), num_of_ratings = num_of_ratings + 1
+  WHERE id = NEW.mid;
+END$$
+
+CREATE TRIGGER update_movie_rating_after_update
+  AFTER UPDATE ON Rating
+  FOR EACH ROW
+BEGIN
+  DECLARE total_rating DECIMAL(4,2);
+  SET total_rating = (SELECT AVG(rate) FROM Rating WHERE mid = NEW.mid);
+  UPDATE Movie
+  SET avg_rate = total_rating / num_of_ratings
   WHERE id = NEW.mid;
 END$$
 

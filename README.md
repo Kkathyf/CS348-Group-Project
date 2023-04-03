@@ -20,7 +20,6 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 1. Type `source production-data.sql;` to load the production dataset.
 1. Type `source test-production.sql;` to test the 6 functionalities on the production dataset.
 
-
 ## Functionalities
 1. View information about the movie selected based on the name. (ex. `The Lord of the Rings`)
 2. Find all movies with ratings in a specific range. (ex. `> 7.0/10.0`)
@@ -30,6 +29,7 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 6. Update the given rate and comments based on the user name.
 
 # Data-driven application
+Before running the data-driven application, please be sure to load in databases (sample or production).
 ## Installation
 1. Go to the `back-end` folder,
     1. type ` pip install -r requirements.txt ` to install all python packages,
@@ -44,6 +44,13 @@ Production database [sql/production-data.sql](sql/production-data.sql) is genera
 3. Order all movies by their rate order. (ex. `High-to-Low` or `Low-to-High`)
 4. Find movies with `top-n` ratings. (ex. `n <= 10`)
 
+## Instruction For Running
+1. [Initialize database](#create-the-database)
+2. [Load Data](#load-the-production-database)
+3. [run main.py in back-end folder](#installation)
+4. [npm install and npm start in front-end folder](#installation)
+5. Go to website localhost:3000
+
 # Members
 Claire Sheng
 
@@ -52,4 +59,3 @@ Ganlin Feng
 Junyi Liu
 
 Yuming Long
-

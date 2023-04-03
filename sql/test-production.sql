@@ -22,9 +22,9 @@ WHERE r <= 10;
 
 # Feature 5:
 INSERT INTO Reviewer (username, num_of_ratings) VALUES ('ily348', 0);
-INSERT INTO Rating (mid, rate, comment) VALUES (0111161, 9.0, "I love.");
+INSERT INTO Rating VALUES (1, 0111161, 9.0, "I love.");
 INSERT INTO Reviewer (username, num_of_ratings) VALUES ('cs348', 0);
-INSERT INTO Rating (mid, rate, comment) VALUES (0111161, 9.3, "I love 2.");
+INSERT INTO Rating VALUES (2, 0111161, 9.3, "I love 2.");
 SELECT * FROM Rating;
 
 # Feature 6:
