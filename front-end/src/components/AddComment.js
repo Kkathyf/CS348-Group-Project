@@ -21,6 +21,7 @@ function AddComment(props) {
         )
         setCommentText('');
         setUsername('');
+        setRating(0);
     };
 
     const changeComment = (e) => {
