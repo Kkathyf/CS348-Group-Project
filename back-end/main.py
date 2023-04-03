@@ -70,12 +70,14 @@ def add_review():
         # print(rid)
         search_reviewer = "SELECT * FROM Reviewer WHERE username = '" + str(review['username']) + "'"
         reviewer = connect(search_reviewer)
+        ##!!!!!!!! cannot add or update rating with 10?
         if reviewer:
             id = connect("SELECT id FROM Reviewer WHERE username = '" + reviewer[0][1] + "'")
             rid = id[0][0]
             find_review = "SELECT * FROM Rating WHERE rid = " + str(rid) + " and mid = " + str(review['mid'])
             review_exist = connect(find_review)
             if review_exist is not None:
+                # print("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
                 connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
             else:
                 connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
@@ -100,6 +102,7 @@ def update_review():
         # reviews['comment']: string
         review = request.get_json()
         # print(review)
+        # print("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         rid = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         # print(rid)
         connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment'])  +"' WHERE rid = " +  str(rid[0][0]) + " and mid = "+  str(review['mid']))
