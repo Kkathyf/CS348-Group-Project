@@ -48,7 +48,7 @@ Before running the data-driven application, please be sure to load in databases 
 1. [Initialize database](#create-the-database)
 2. [Load Data](#load-the-production-database)
 3. [run main.py in back-end folder](#installation)
-4. [npm start in front-end folder](#installation)
+4. [npm install and npm start in front-end folder](#installation)
 5. Go to website localhost:3000
 
 # Members
