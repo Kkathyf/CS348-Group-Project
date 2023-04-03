@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS Rating;
 CREATE TABLE Rating (
   rid INT NOT NULL,
   mid INT NOT NULL,
-  rate DECIMAL(2,1),
+  rate DECIMAL(4, 2),
   comment VARCHAR(255),
   PRIMARY KEY (rid, mid),
   FOREIGN KEY (rid) REFERENCES Reviewer(id),
