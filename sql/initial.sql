@@ -99,17 +99,6 @@ BEGIN
   WHERE id = NEW.mid;
 END$$
 
-CREATE TRIGGER update_movie_rating_after_update
-  AFTER UPDATE ON Rating
-  FOR EACH ROW
-BEGIN
-  DECLARE total_rating DECIMAL(4,2);
-  SET total_rating = (SELECT AVG(rate) FROM Rating WHERE mid = NEW.mid);
-  UPDATE Movie
-  SET avg_rate = total_rating / num_of_ratings
-  WHERE id = NEW.mid;
-END$$
-
 CREATE TRIGGER update_reviewer_num_of_ratings
   AFTER INSERT ON Rating
   FOR EACH ROW

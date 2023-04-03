@@ -16,6 +16,7 @@ def connect(query):
         # execute the SQL script
         cursor.execute(query)
         data = cursor.fetchall()
+        cnx.commit()
         cursor.close()
         cnx.close()
         return data
