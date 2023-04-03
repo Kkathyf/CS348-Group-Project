@@ -35,7 +35,6 @@ def get_comments():
     d = []
     for entry in data:
         username = connect("SELECT username FROM Reviewer WHERE id = " + str(entry[0]))
-        # print(username[0][0])
         rating = entry[1]/2
         d.append((username[0][0], rating, entry[2]))
     # print(d)
@@ -70,16 +69,18 @@ def add_review():
         # print(rid)
         search_reviewer = "SELECT * FROM Reviewer WHERE username = '" + str(review['username']) + "'"
         reviewer = connect(search_reviewer)
-        ##!!!!!!!! cannot add or update rating with 10?
+        # print(reviewer)
         if reviewer:
             id = connect("SELECT id FROM Reviewer WHERE username = '" + reviewer[0][1] + "'")
             rid = id[0][0]
             find_review = "SELECT * FROM Rating WHERE rid = " + str(rid) + " and mid = " + str(review['mid'])
             review_exist = connect(find_review)
-            if review_exist is not None:
-                # print("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
-                connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
+            # print("r:", bool(review_exist))
+            if review_exist:
+                connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" +
+                        str(review['comment']) + "' WHERE rid = " + str(rid) + " and mid = " + str(review['mid']))
             else:
+                # print("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
                 connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
         else:
             add_reviewer = "INSERT INTO Reviewer (username, num_of_ratings) VALUES ('" + str(review['username']) + "', 0);"
@@ -105,7 +106,7 @@ def update_review():
         # print("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         rid = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         # print(rid)
-        connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment'])  +"' WHERE rid = " +  str(rid[0][0]) + " and mid = "+  str(review['mid']))
+        connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment']) + "' WHERE rid = " + str(rid[0][0]) + " and mid = " + str(review['mid']))
 
         result = "Update success"
         return jsonify(result)
