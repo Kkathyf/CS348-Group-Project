@@ -35,8 +35,10 @@ Before running the data-driven application, please be sure to load in databases 
     1. type ` pip install -r requirements.txt ` to install all python packages,
     2. and type `python3 main.py` to start.
 2. Go to the `front-end` folder,
-    1. type `npm install` to install dependencies,
-    2. In the same folder, type `npm start`, and this will display a webpage.
+    1. type `npm config set legacy-peer-deps true`.
+    2. type `npm install` to install dependencies.
+    3. type `npm install @material-ui/icons` to install icons.
+    4. In the same folder, type `npm start`, and this will display a webpage.
     
 ## Functionalities
 1. View information about the movie selected based on the name. (ex. `The Lord of the Rings`)
