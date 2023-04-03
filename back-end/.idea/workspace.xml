@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc216194-d2a7-4dbe-8e79-31869a51a35b" name="Changes" comment="" />
+    <list default="true" id="dc216194-d2a7-4dbe-8e79-31869a51a35b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/router.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

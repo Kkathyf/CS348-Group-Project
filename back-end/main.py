@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, send_file, jsonify
 from flask_cors import CORS, cross_origin
-from connection import connect, connects
+from connection import connect
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -27,30 +27,20 @@ def main():
         data = connect(sql_str)
         return jsonify(data)
 
+@app.route('/comment', methods=['GET'])
+def get_comments():
+    movie = request.args
+    sql = "SELECT rid, rate, comment FROM Rating where mid = " + str(movie.get('id'))
+    data = connect(sql)
+    d = []
+    for entry in data:
+        username = connect("SELECT username FROM Reviewer WHERE id = " + str(entry[0]))
+        # print(username[0][0])
+        rating = entry[1]/2
+        d.append((username[0][0], rating, entry[2]))
+    # print(d)
+    return jsonify(d)
 
-# api for feature 2
-@app.route('/grt_n', methods=['POST'])
-def grt_n(n):
-    if request.method == 'POST':
-        # n_ratings = request.get_json()
-        data = connect("WHERE avg_rate > %.1f" % n)
-        return jsonify(data)
-
-# api for feature 3
-@app.route('/by_director', methods=['POST'])
-def by_director():
-    if request.method == 'POST':
-        director = request.get_json()
-        data = connect("WHERE id IN (SELECT mid FROM Director JOIN Direction ON id = did WHERE first_name = %s and surname = %s" % (director['first_name'], director['surname']))
-        return jsonify(data)
-
-# api for feature 4
-@app.route('/top_n', methods=['POST'])
-def top_n():
-    if request.method == 'POST':
-        n_ratings = request.get_json()
-        data = connects("SELECT * FROM (SELECT name, RANK() OVER (ORDER BY (avg_rate) DESC) AS r FROM Movie) AS T WHERE r <= %d" % (n_ratings['n']))
-        return jsonify(data)
 
 # api for feature 5
 @app.route('/add_review', methods=['POST'])
@@ -61,23 +51,46 @@ def add_review():
         # reviews['mid']: movie id
         # reviews['rating']: rating, a number
         # reviews['comment']: string
-        reviews = request.get_json()
-        result = ""
-        reviewer = connects(f"SELECT * FROM Reviewer WHERE username = \"{reviews['rname']}\"")
+        review = request.get_json()
+        '''
+        reviewer = connect(f"SELECT * FROM Reviewer WHERE username = \"{reviews['reviewer']}\"")
         # if reviewer exists
         rid = 0
         if not reviewer:
             # reviewer not exists
-            connects(f"INSERT INTO Reviewer (username, num_of_ratings) VALUES (\"{reviews['rname']}\", 0)")
+            connect(f"INSERT INTO Reviewer (username, num_of_ratings) VALUES (\"{reviews['reviewer']}\", 0)")
         else:
             rid = reviewer[0][0]
-        if (connects("SELECT * FROM Rating WHERE rid = %d AND mid = %d" % (reviews['rid'], reviews['mid']))):
+        # if (connects("SELECT * FROM Rating WHERE rid = %d AND mid = %d" % (rid, reviews['mid']))):
         # if review already exists
-            connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
-            result = "Comment updated"
+           # connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], rid, reviews['mid']))
+            # result = "Comment updated"
+        # else:
+        '''
+        # print(rid)
+        search_reviewer = "SELECT * FROM Reviewer WHERE username = '" + str(review['username']) + "'"
+        reviewer = connect(search_reviewer)
+        if reviewer:
+            find_rid = "SELECT id FROM Reviewer WHERE username = '" + str(reviewer[0]) + "'"
+            id = connect(find_rid)
+            rid = id[0][0]
+            find_review = "SELECT * FROM Rating WHERE rid = " + str(rid) + " and mid = " + str(review['mid'])
+            review_exist = connect(find_review)
+            if review_exist is not None:
+                connect("UPDATE Rating SET rate = %d, comment = %s WHERE rid = %d, mid = %d" % (review['rating'], review['comment'], rid, review['mid']))
+            else:
+                connect("INSERT INTO Rating (rid, mid, rate, comment) VALUES (%d, %d, %d, %s)" % (rid, review['mid'], review['rating'], review['comment']))
         else:
-            connects("INSERT INTO Rating values (%d, %d, %.1f, %s)" % (rid, reviews['mid'], reviews['rating'], reviews['comment']))
-            result = "Comment added"
+            add_reviewer = "INSERT INTO Reviewer (username, num_of_ratings) VALUES ('" + str(review['username']) + "', 0);"
+            print(add_reviewer)
+            print(connect(add_reviewer))
+            print(connect('SELECT * from Reviewer'))
+            id = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username'] + "'"))
+            rid = id[0][0]
+            print(rid, review['mid'], review['rating'], review['comment'])
+            connect("INSERT INTO Rating (rid, mid, rate, comment) VALUES (%d, %d, %d, %s)" % (rid, review['mid'], review['rating'], review['comment']))
+
+        result = "Comment added"
         return jsonify(result)
 
 # feature for updating rating
@@ -89,8 +102,12 @@ def update_review():
         # reviews['mid']: movie id
         # reviews['rating']: rating, a number
         # reviews['comment']: string
-        reviews = request.get_json()
-        connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
+        review = request.get_json()
+        # print(review)
+        print("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
+        rid = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
+        # print(rid)
+        connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment'])  +"' WHERE rid = " +  str(rid[0][0]) + " and mid = "+  str(review['mid']))
         result = "Update success"
         return jsonify(result)
 

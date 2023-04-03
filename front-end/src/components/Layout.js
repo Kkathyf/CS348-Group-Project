@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Row from "react-bootstrap/Row";
+import {Link} from "react-router-dom";
 
 const Layout = (props) => {
     return (
@@ -11,6 +12,7 @@ const Layout = (props) => {
                     Movies
                 </h4>
             </Row>
+
             <Table>
                 <thead>
                 <tr>
@@ -24,7 +26,7 @@ const Layout = (props) => {
                 {
                     props.data && props.data.map((value, index) => (
                         <tr>
-                            <td>{value[1]}</td>
+                            <td><Link to="/comments" state={{id: value[0], name: value[1]}}>{value[1]}</Link></td>
                             <td>{value[2]}</td>
                             <td>{value[3]}</td>
                             <td>{value[4]}</td>
