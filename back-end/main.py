@@ -85,12 +85,18 @@ def add_review():
 def update_review():
     if request.method == 'POST':
         # review json content
-        # reviews['rid']: reviewer id
-        # reviews['mid']: movie id
+        # reviews['rname']: reviewer name
+        # reviews['mname']: movie name
         # reviews['rating']: rating, a number
         # reviews['comment']: string
         reviews = request.get_json()
-        connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], reviews['rid'], reviews['mid']))
+        reviewer = connects(f"SELECT * FROM Reviewer WHERE username = \"{reviews['rname']}\"")
+        movie = connects(f"SELECT * FROM Movie WHERE name = \"{reviews['mname']}\"")
+
+        rid = reviewer[0][0]
+        mid = movie[0][0]
+
+        connects("UPDATE Rating SET rate = %.1f, comment = %s WHERE rid = %d, mid = %d" % (reviews['rating'], reviews['comment'], rid, mid))
         result = "Update success"
         return jsonify(result)
 
