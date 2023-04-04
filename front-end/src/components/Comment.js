@@ -19,13 +19,14 @@ const Comment = (props) => {
         console.log(props.id);
         await axios.post('http://localhost:5000/update_review',{username: props.username, mid: props.id, rating:rating * 2, comment:commentText}).then(
             res => {
+                //props.setRefetch(true);
                 props.setRefetch(!props.refetch);
             }
         )
         setIsEdit(false);
     };
 
-    const  changeToEdit = (e) => {
+    const changeToEdit = (e) => {
         e.preventDefault();
         setIsEdit(true);
     }
@@ -64,7 +65,7 @@ const Comment = (props) => {
                             <Form.Label>Rating: </Form.Label>
                             <RatingStars rating={rating} setRating={setRating} edit={false}/>
                             <br />
-                            <Form.Label>Comment: {commentText}</Form.Label>
+                            <Form.Label>Comment: {props.comment}</Form.Label>
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Edit

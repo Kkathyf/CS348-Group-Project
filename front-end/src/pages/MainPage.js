@@ -17,7 +17,7 @@ function MainPage() {
             console.log(order);
             await axios.post('http://localhost:5000', {data: searchTerm, grt_n: value, order: order, num:num}).then(
                 res => {
-                    setData(res.data)
+                    setData(res.data);
                 }
             )
         };

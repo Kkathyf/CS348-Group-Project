@@ -16,6 +16,7 @@ function AddComment(props) {
         e.preventDefault();
         await axios.post('http://localhost:5000/add_review',{username: username, mid: props.id, rating:rating * 2, comment:commentText}).then(
             res => {
+                //props.setRefetch(true);
                 props.setRefetch(!props.refetch);
             }
         )

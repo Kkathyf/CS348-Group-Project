@@ -20,7 +20,7 @@ function CommentPage() {
 
     useEffect(() => {
         fetchData('http://localhost:5000/comment');
-    }, [refetch])
+    }, [refetch]);
 
     return (
         <div className="App">
@@ -35,14 +35,16 @@ function CommentPage() {
             <AddComment refetch={refetch} setRefetch={setRefetch} id={location.state.id}/>
             {
                 comments && comments.map((value, index) => (
-                    <Comment
-                        username={value[0]}
-                        rating={value[1]}
-                        id={location.state.id}
-                        comment={value[2]}
-                        refetch={refetch}
-                        setRefetch={setRefetch}
-                    />
+                    <div key={value}>
+                        <Comment
+                            username={value[0]}
+                            rating={value[1]}
+                            id={location.state.id}
+                            comment={value[2]}
+                            refetch={refetch}
+                            setRefetch={setRefetch}
+                        />
+                    </div>
                 ))
             }
         </div>
