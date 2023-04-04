@@ -15,15 +15,16 @@ def main():
     elif request.method == 'POST':
         searchTerm = request.get_json()
         sql_str = "SELECT * FROM("
-        sql_str += "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
-                  "%' and avg_rate >= " + str(searchTerm['grt_n'])
-        sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
+        sql_str += "SELECT *, RANK() OVER (ORDER BY (avg_rate) DESC) as r FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
+                  "%' and avg_rate >= " + str(searchTerm['grt_n']) + ") as T"
+        #sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
+        sql_str += " WHERE T.r <= " + str(searchTerm['num'])
         if searchTerm['order'] == 'Rating High to Low':
             sql_str += ' ORDER BY (avg_rate) DESC '
         elif searchTerm['order'] == 'Rating Low to High':
             sql_str += ' ORDER BY (avg_rate) ASC '
 
-        #print(sql_str)
+        print(sql_str)
         data = connect(sql_str)
         return jsonify(data)
 
