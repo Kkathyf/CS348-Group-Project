@@ -24,7 +24,7 @@ def main():
         elif searchTerm['order'] == 'Rating Low to High':
             sql_str += ' ORDER BY (avg_rate) ASC '
 
-        print(sql_str)
+        #print(sql_str)
         data = connect(sql_str)
         return jsonify(data)
 
