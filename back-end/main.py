@@ -15,15 +15,16 @@ def main():
     elif request.method == 'POST':
         searchTerm = request.get_json()
         sql_str = "SELECT * FROM("
-        sql_str += "SELECT * FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
-                  "%' and avg_rate >= " + str(searchTerm['grt_n'])
-        sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
+        sql_str += "SELECT *, RANK() OVER (ORDER BY (avg_rate) DESC) as r FROM Movie WHERE name LIKE '%" + searchTerm['data'] + \
+                  "%' and avg_rate >= " + str(searchTerm['grt_n']) + ") as T"
+        #sql_str += " ORDER BY (avg_rate) DESC LIMIT " + str(searchTerm['num']) + ") as T"
+        sql_str += " WHERE T.r <= " + str(searchTerm['num'])
         if searchTerm['order'] == 'Rating High to Low':
             sql_str += ' ORDER BY (avg_rate) DESC '
         elif searchTerm['order'] == 'Rating Low to High':
             sql_str += ' ORDER BY (avg_rate) ASC '
 
-        #print(sql_str)
+        print(sql_str)
         data = connect(sql_str)
         return jsonify(data)
 
@@ -35,7 +36,6 @@ def get_comments():
     d = []
     for entry in data:
         username = connect("SELECT username FROM Reviewer WHERE id = " + str(entry[0]))
-        # print(username[0][0])
         rating = entry[1]/2
         d.append((username[0][0], rating, entry[2]))
     # print(d)
@@ -60,10 +60,12 @@ def add_review():
             rid = id[0][0]
             find_review = "SELECT * FROM Rating WHERE rid = " + str(rid) + " and mid = " + str(review['mid'])
             review_exist = connect(find_review)
-            if review_exist is not None:
-                # print("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
-                connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + review['comment'] + "' " + "WHERE rid = %d and mid = %d" % (rid, review['mid']))
+            # print("r:", bool(review_exist))
+            if review_exist:
+                connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" +
+                        str(review['comment']) + "' WHERE rid = " + str(rid) + " and mid = " + str(review['mid']))
             else:
+                # print("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
                 connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
         else:
             add_reviewer = "INSERT INTO Reviewer (username, num_of_ratings) VALUES ('" + str(review['username']) + "', 0);"
@@ -89,7 +91,7 @@ def update_review():
         # print("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         rid = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username']) + "'")
         # print(rid)
-        connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment'])  +"' WHERE rid = " +  str(rid[0][0]) + " and mid = "+  str(review['mid']))
+        connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" + str(review['comment']) + "' WHERE rid = " + str(rid[0][0]) + " and mid = " + str(review['mid']))
 
         result = "Update success"
         return jsonify(result)

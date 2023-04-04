@@ -88,6 +88,18 @@ CREATE TABLE Rating (
   FOREIGN KEY (mid) REFERENCES Movie(id)
 );
 
+CREATE INDEX idx_name
+ON Movie(name);
+
+CREATE INDEX idx_rate
+ON Movie(avg_rate);
+
+CREATE INDEX idx_username
+ON Reviewer(username);
+
+CREATE INDEX idx_rating
+ON Rating(rid, mid);
+
 DELIMITER $$
 
 CREATE TRIGGER update_movie_rating
